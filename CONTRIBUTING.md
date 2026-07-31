@@ -12,7 +12,8 @@ the contents of `SteamDeckKeyboardFixSkyrim.log` where possible.
 
 This project is currently maintained as a solo-maintainer project. Pull
 requests will only be considered when the maintainer has specifically asked
-someone to submit one. Unsolicited pull requests will be closed.
+someone to submit one. Unsolicited pull requests will be closed - please submit
+a GitHub Issue instead.
 
 This contribution policy does not restrict the rights granted under the
 GPL-3.0-only licence.

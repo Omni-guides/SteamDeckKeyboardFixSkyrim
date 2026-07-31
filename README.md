@@ -7,8 +7,9 @@ The issue is associated with the Steam Deck support introduced by Bethesda in
 Skyrim 1.6.1130 and remains present in 1.6.1170.
 
 Version 0.3.2 is an initial public testing release. It has passed controlled
-testing on Steam Deck with Skyrim 1.6.1170 and SKSE 2.2.6. Compatibility with
-Skyrim 1.6.1130 is supported but has received less testing so far.
+testing on multiple Steam Deck systems with Skyrim 1.6.1170 and SKSE 2.2.6.
+Compatibility with Skyrim 1.6.1130 is supported but has received less testing
+so far.
 
 ## Requirements
 
@@ -24,12 +25,10 @@ remains inactive on native Windows installations.
 
 1. Confirm that your Skyrim and SKSE versions match a supported combination
    in the table above.
-2. Remove or disable any earlier version of this fix. In particular, make sure
-   `SteamDeckKeyboardCrashFix.dll` is not still present in another mod.
-3. Download the packaged release ZIP from the GitHub Releases page. Do not use
+2. Download the packaged release ZIP from the GitHub Releases page. Do not use
    GitHub's automatically generated "Source code" archives as the mod package.
-4. Install the release ZIP with your mod manager and enable it.
-5. Launch Skyrim through SKSE.
+3. Install the release ZIP with your Mod Manager and enable it.
+4. Launch Skyrim/SKSE through your Mod Manager.
 
 For a manual installation, open the release ZIP and copy its `SKSE` folder
 into Skyrim's `Data` directory, merging folders when prompted. The installed
@@ -64,8 +63,25 @@ flow and safety limits.
 
 ## Log
 
-The plugin writes `SteamDeckKeyboardFixSkyrim.log` to the SKSE log directory.
-When the known failure is encountered and contained, the log includes:
+The plugin writes `SteamDeckKeyboardFixSkyrim.log` to the SKSE log directory
+inside the Proton prefix used to launch the mod list. Within that prefix, the
+path is normally:
+
+```text
+pfx/drive_c/users/steamuser/Documents/My Games/Skyrim Special Edition/SKSE/SteamDeckKeyboardFixSkyrim.log
+```
+
+For a mod list using Steam's `compatdata` directory, a complete path will look
+similar to:
+
+```text
+/home/deck/.local/share/Steam/steamapps/compatdata/<app-id>/pfx/drive_c/users/steamuser/Documents/My Games/Skyrim Special Edition/SKSE/SteamDeckKeyboardFixSkyrim.log
+```
+
+Replace `<app-id>` with the Steam shortcut or mod-list application ID used by
+your installation. `skse64.log` is normally in the same directory.
+
+When the known failure is encountered and contained, the plugin log includes:
 
 ```text
 Contained a null execute violation from SteamAPI_RunCallbacks.
@@ -73,17 +89,18 @@ Contained a null execute violation from SteamAPI_RunCallbacks.
 
 The warning is written only once per game session. Its absence does not
 necessarily indicate a problem; it appears only when the affected callback
-actually encounters the known fault. On native Windows, the log instead
+actually encounters the known fault. On Windows, the log instead
 reports that the hook was not installed.
 
 ## Testing notice
 
 This is an early testing release intended for the supported versions listed
 above. The fix is deliberately narrow, has no save-game data, and remains
-inactive on native Windows. Even so, keep normal backups of important saves
-and report any unexpected behaviour. Installing and using the plugin is at
-your own discretion; no software can be guaranteed compatible with every mod
-list or future game update.
+inactive on Windows. As an extra precaution during early testing, keep
+normal backups of important saves and report any unexpected behaviour. The
+plugin is not known to affect save data. Installing and using it is at your
+own discretion - no software can be guaranteed compatible with every mod list
+or future game update.
 
 ## Build
 
@@ -103,12 +120,11 @@ Include the following where possible:
 - Steam Deck model and SteamOS update channel
 - Skyrim and SKSE versions
 - Proton version
-- Whether the problem occurred at the main menu or in-game
+- Whether the issue is repeatable
 - The steps used to open and close the keyboard
 - `SteamDeckKeyboardFixSkyrim.log`
 - `skse64.log` and a crash log, if one was produced
 
-Do not include account details or unrelated personal paths in uploaded logs.
 See [CONTRIBUTING.md](CONTRIBUTING.md) before submitting code changes.
 
 ## Licence

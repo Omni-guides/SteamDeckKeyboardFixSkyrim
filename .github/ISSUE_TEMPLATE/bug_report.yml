@@ -7,7 +7,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thank you for helping test Steam Deck Keyboard Fix for Skyrim. Please remove account details and unrelated personal paths from logs before uploading them.
+        Thank you for helping test Steam Deck Keyboard Fix for Skyrim.
   - type: input
     id: skyrim-version
     attributes:
@@ -26,7 +26,7 @@ body:
     id: proton-version
     attributes:
       label: Proton version
-      placeholder: Proton 9.0-4
+      placeholder: Proton 10, Proton Experimental, or GE-Proton version
     validations:
       required: true
   - type: input
@@ -59,7 +59,12 @@ body:
     id: logs
     attributes:
       label: Logs
-      description: Attach SteamDeckKeyboardFixSkyrim.log, skse64.log and any crash log. You can drag files into this box.
+      description: >-
+        Attach SteamDeckKeyboardFixSkyrim.log, skse64.log and any crash log.
+        The SKSE logs are normally under
+        `/home/deck/.local/share/Steam/steamapps/compatdata/<app-id>/pfx/drive_c/users/steamuser/Documents/My Games/Skyrim Special Edition/SKSE/`.
+        Replace `<app-id>` with the Steam shortcut or mod-list application ID
+        used by your installation. You can drag files into this box.
     validations:
       required: false
   - type: textarea
