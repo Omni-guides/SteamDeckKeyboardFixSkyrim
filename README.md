@@ -25,8 +25,10 @@ remains inactive on native Windows installations.
 
 1. Confirm that your Skyrim and SKSE versions match a supported combination
    in the table above.
-2. Download the packaged release ZIP from the GitHub Releases page. Do not use
-   GitHub's automatically generated "Source code" archives as the mod package.
+2. Download the packaged mod from
+   [Nexus Mods](https://www.nexusmods.com/skyrimspecialedition/mods/188036).
+   GitHub provides the source code, technical documentation and issue tracker;
+   its automatically generated "Source code" archives are not the mod package.
 3. Install the release ZIP with your Mod Manager and enable it.
 4. Launch Skyrim/SKSE through your Mod Manager.
 
